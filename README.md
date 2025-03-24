@@ -44,7 +44,7 @@ PyGame, PyOpenGL, PyWin32, PySide and PySDL2.
 Command to install with pip:
 
 ```
-pip install cefpython3==66.1
+pip install cefpythonx
 ```
 
 Hosted at [pypi/cefpython3](https://pypi.python.org/pypi/cefpython3). On Linux pip 8.1+ is required.
@@ -55,7 +55,7 @@ Below is a table with supported platforms, python versions and architectures.
 
 OS | Py2 | Py3 | 32bit | 64bit | Requirements
 --- | --- | --- | --- | --- | ---
-Windows | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 / 3.8 / 3.9 | Yes | Yes | Windows 7+ (Note that Python 3.9 supports Windows 8.1+)
+Windows | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 / 3.8 / 3.9 / 3.10 / 3.11 / 3.12 / 3.13 | Yes | Yes | Windows 7+ (Note that Python 3.9 supports Windows 8.1+)
 Linux | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 | Yes | Yes | Debian 8+, Ubuntu 14.04+,<br> Fedora 24+, openSUSE 13.3+
 Mac | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 | No | Yes | MacOS 10.9+
 
