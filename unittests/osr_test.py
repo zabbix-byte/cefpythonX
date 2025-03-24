@@ -9,7 +9,7 @@ import unittest
 import _test_runner
 from _common import *
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 import sys
 

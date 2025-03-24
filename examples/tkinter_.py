@@ -16,7 +16,7 @@
 # Other focus issues discussed in Issue #535.
 
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import ctypes
 try:
     import tkinter as tk

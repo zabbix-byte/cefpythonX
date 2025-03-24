@@ -13,7 +13,7 @@
 # - Mac: Keyboard focus issues when switching between controls (Issue #284)
 # - Mac: Mouse cursor never changes when hovering over links (Issue #311)
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import ctypes
 import os
 import platform

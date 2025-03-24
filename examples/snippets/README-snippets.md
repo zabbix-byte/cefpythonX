@@ -7,11 +7,11 @@ Table of contents:
 
 ## Hello World!
 
-Instructions to install the cefpython3 package, clone
+Instructions to install the cefpythonx package, clone
 the repository and run the `javascript_bindings.py` snippet:
 
 ```
-pip install cefpython3==66.0
+pip install cefpythonx==66.0
 git clone https://github.com/cztomczak/cefpython.git
 cd cefpython/examples/snippets/
 python javascript_bindings.py

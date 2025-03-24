@@ -2,7 +2,7 @@
 # All rights reserved. Licensed under BSD 3-clause license.
 # Project website: https://github.com/cztomczak/cefpython
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 import base64
 import os

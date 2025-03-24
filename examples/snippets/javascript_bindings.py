@@ -3,7 +3,7 @@ Communicate between Python and Javascript asynchronously using
 inter-process messaging with the use of Javascript Bindings.
 """
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 g_htmlcode = """
 <!doctype html>

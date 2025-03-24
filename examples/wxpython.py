@@ -8,7 +8,7 @@
 # - CEF Python v66.0+
 
 import wx
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import platform
 import sys
 import os

@@ -39,10 +39,10 @@ lists most notable breaking changes for each release. Full chanelogs
 can be found on [GitHub Releases](../../../releases) pages.
 
 Due to unavoidable changes in upstream API it is recommended for your setup
-scripts, that for example use PIP to install the cefpython3 package,
+scripts, that for example use PIP to install the cefpythonx package,
 to hardcode the cefpython version string. If for example using PIP's
-`requirements.txt` file then include the cefpython3 package in the
-following format if using e.g. cefpython v57.0: `cefpython3 == 57.0`.
+`requirements.txt` file then include the cefpythonx package in the
+following format if using e.g. cefpython v57.0: `cefpythonx == 57.0`.
 
 
 ## Differences between Python 2 and Python 3

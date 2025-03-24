@@ -3,7 +3,7 @@
 
 #-------------------------------------------------------------------------------
 
-from cefpython3 import cefpython
+from cefpythonx import cefpython
 import os, sys, platform
 import wx
 import wx.lib.buttons as buttons

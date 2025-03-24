@@ -4,7 +4,7 @@
 # - GTK 2.24 on Windows/Linux/Mac
 # - CEF Python v55.3+
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import pygtk
 import gtk
 import gobject

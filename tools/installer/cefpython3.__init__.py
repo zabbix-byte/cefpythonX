@@ -17,12 +17,12 @@ __author__ = "The CEF Python authors"
 
 # If package was installed using PIP or setup.py then package
 # dir is here:
-#   /usr/local/lib/python2.7/dist-packages/cefpython3/
+#   /usr/local/lib/python2.7/dist-packages/cefpythonx/
 
 # If this is a debian package then package_dir returns:
-#   /usr/lib/pymodules/python2.7/cefpython3
+#   /usr/lib/pymodules/python2.7/cefpythonx
 # The above path consists of symbolic links to the real directory:
-#   /usr/share/pyshared/cefpython3
+#   /usr/share/pyshared/cefpythonx
 
 package_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -35,7 +35,7 @@ else:
     os.environ["LD_LIBRARY_PATH"] = package_dir
 
 # This env variable will be returned by cefpython.GetModuleDirectory().
-os.environ["CEFPYTHON3_PATH"] = package_dir
+os.environ["cefpythonx_PATH"] = package_dir
 
 # This loads the libcef library for the main python executable.
 # Loading library dynamically using ctypes.CDLL is required on Linux.

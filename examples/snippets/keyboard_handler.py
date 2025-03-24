@@ -1,4 +1,4 @@
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 
 def main():

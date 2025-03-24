@@ -3,7 +3,7 @@ a given url and how to delete a specific cookie. For
 an example on how to set a cookie see the 'setcookie.py'
 snippet."""
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 
 def main():

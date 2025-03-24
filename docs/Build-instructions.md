@@ -455,7 +455,7 @@ To create a wheel package type:
 ```
 cd cefpython/build/
 python ../tools/make_installer.py xx.xx --wheel --universal
-cd cefpython3_*/dist/
+cd cefpythonx_*/dist/
 ls
 ```
 

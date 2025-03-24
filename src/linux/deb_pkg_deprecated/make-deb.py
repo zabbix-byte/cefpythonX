@@ -29,7 +29,7 @@ if BITS == "32bit":
 else:
     LINUX_BITS = "linux64"
 
-PACKAGE_NAME = "cefpython3"
+PACKAGE_NAME = "cefpythonx"
 PYTHON_NAME ="python2.7" # Directory name in deb archive
 
 HOMEPAGE = "https://code.google.com/p/cefpython/"
@@ -43,7 +43,7 @@ DESCRIPTION_EXTENDED = \
 
 COPYRIGHT = \
 """Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Name: cefpython3
+Name: cefpythonx
 Maintainer: %s
 Source: %s
 
@@ -63,19 +63,19 @@ VERSION = None
 # cefpython/linux/installer
 INSTALLER = os.path.dirname(os.path.abspath(__file__))
 
-# installer/cefpython3-31.0-linux-64bit-setup/
+# installer/cefpythonx-31.0-linux-64bit-setup/
 DISTUTILS_SETUP = None
 
 # deb_dist/
 DEB_DIST = None
 
-# deb_dist/cefpython3-31.0/
+# deb_dist/cefpythonx-31.0/
 DEB_DIST_PACKAGE = None
 
-# deb_dist/cefpython3-31.0/debian/
+# deb_dist/cefpythonx-31.0/debian/
 DEBIAN = None
 
-# deb_dist/cefpython3-31.0/debian/python-cefpython3/
+# deb_dist/cefpythonx-31.0/debian/python-cefpythonx/
 DEBIAN_PACKAGE = None
 
 # -----------------------------------------------------------------------------
@@ -170,7 +170,7 @@ def copy_postinst_script():
     # by dh_pysupport, its contents are:
     # -----------------------------------------------------
     # if which update-python-modules >/dev/null 2>&1; then
-    #     update-python-modules  python-cefpython3.public
+    #     update-python-modules  python-cefpythonx.public
     # fi
     # -----------------------------------------------------
     # The command above creates symlinks for libraries and
@@ -235,7 +235,7 @@ def modify_deb_archive():
     # archive, move the /usr/lib/pyshared/.../*.so libraries to
     # the /usr/share/pyshared/.../ directory. Also some files with
     # hardcoded paths to /usr/lub/pyshared/ need to be modified
-    # (eg. DEBIAN/md5sums, python-support/python-cefpython3.public).
+    # (eg. DEBIAN/md5sums, python-support/python-cefpythonx.public).
     log("Modifying the deb archive")
 
     # Paths
@@ -275,22 +275,22 @@ def modify_deb_archive():
 
     # Modify also the paths in some text files.
     # The paths do not start with "/" on purpose. In the md5sums
-    # file the paths are relative. In the python-cefpython3.public
+    # file the paths are relative. In the python-cefpythonx.public
     # file paths are absolute.
     log("Modifying paths in the text files")
     old_path = "usr/lib/pyshared/%s/%s/" % (PYTHON_NAME, PACKAGE_NAME)
     new_path = "usr/share/pyshared/%s/" % PACKAGE_NAME
     md5sums_file = "./DEBIAN/md5sums"
-    cefpython3_public_file = "./usr/share/python-support/python-%s.public" \
+    cefpythonx_public_file = "./usr/share/python-support/python-%s.public" \
             % PACKAGE_NAME
     old_md5sum = subprocess.check_output("md5sum %s | cut -c 1-32" \
-            % cefpython3_public_file, shell=True).strip()
+            % cefpythonx_public_file, shell=True).strip()
     # Modify paths in the text files
     replace_in_file(md5sums_file, old_path, new_path)
-    replace_in_file(cefpython3_public_file, old_path, new_path)
-    # Correct md5 sum for the python-cefpython3.public file
+    replace_in_file(cefpythonx_public_file, old_path, new_path)
+    # Correct md5 sum for the python-cefpythonx.public file
     new_md5sum = subprocess.check_output("md5sum %s | cut -c 1-32" \
-            % cefpython3_public_file, shell=True).strip()
+            % cefpythonx_public_file, shell=True).strip()
     replace_in_file(md5sums_file, old_md5sum, new_md5sum)
 
     # Create deb archive from the modified ./DEBIAN/ and

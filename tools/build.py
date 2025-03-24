@@ -958,8 +958,8 @@ def delete_directory_reliably(adir):
         # rmtree is vulnerable to race conditions. Sometimes
         # deleting directory fails with error:
         # >> OSError: [WinError 145] The directory is not empty:
-        # >> 'C:\\github\\cefpython\\build\\cefpython3_56.2_win64\\build\\
-        # >> lib\\cefpython3'
+        # >> 'C:\\github\\cefpython\\build\\cefpythonx_56.2_win64\\build\\
+        # >> lib\\cefpythonx'
         shutil.rmtree(adir, ignore_errors=True)
     else:
         # On Linux sudo might be required to delete directory, as this

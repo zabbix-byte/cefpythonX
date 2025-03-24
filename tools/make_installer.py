@@ -55,7 +55,7 @@ def main():
     global SETUP_DIR, PKG_DIR
     setup_dir_name = get_setup_installer_basename(VERSION, OS_POSTFIX2)
     SETUP_DIR = os.path.join(BUILD_DIR, setup_dir_name)
-    PKG_DIR = os.path.join(SETUP_DIR, "cefpython3")
+    PKG_DIR = os.path.join(SETUP_DIR, "cefpythonx")
 
     # Print src and dest for file operations
     print("[make_installer.py] Src:    {src}".format(src=ROOT_DIR))
@@ -152,16 +152,16 @@ def copy_tools_installer_files(setup_dir, pkg_dir):
     variables["SYSCONFIG_PLATFORM"] = sysconfig.get_platform()
 
     shutil.copy(
-        os.path.join(INSTALLER_DIR, "cefpython3.README.txt"),
+        os.path.join(INSTALLER_DIR, "cefpythonx.README.txt"),
         os.path.join(setup_dir, "README.txt"))
 
     copy_template_file(
-        os.path.join(INSTALLER_DIR, "cefpython3.setup.py"),
+        os.path.join(INSTALLER_DIR, "cefpythonx.setup.py"),
         os.path.join(setup_dir, "setup.py"),
         variables)
 
     copy_template_file(
-        os.path.join(INSTALLER_DIR, "cefpython3.__init__.py"),
+        os.path.join(INSTALLER_DIR, "cefpythonx.__init__.py"),
         os.path.join(pkg_dir, "__init__.py"),
         variables)
 

@@ -29,7 +29,7 @@ Table of contents:
 * [v49+ cef.Request.Flags changed](#v49-cefrequestflags-changed)
 * [v49+ Request.GetHeaderMap and SetHeaderMap change](#v49-requestgetheadermap-and-setheadermap-change)
 * [v49+ (Win) HTTPS cache problems on pages with certificate errors](#v49-win-https-cache-problems-on-pages-with-certificate-errors)
-* [v50+ Importing the cefpython3 package on Linux](#v50-importing-the-cefpython3-package-on-linux)
+* [v50+ Importing the cefpythonx package on Linux](#v50-importing-the-cefpythonx-package-on-linux)
 * [v50+ Install X11 error handlers on Linux](#v50-install-x11-error-handlers-on-linux)
 * [v50+ Set window bounds on Linux](#v50-set-window-bounds-on-linux)
 * [v50+ Keyboard focus issues on Linux](#v50-keyboard-focus-issues-on-linux)
@@ -58,7 +58,7 @@ Table of contents:
 
 In latest CEF Python there is only one distribution package
 available: a wheel package. Wheel packages are distributed on
-[PyPI](https://pypi.python.org/pypi/cefpython3) and you can
+[PyPI](https://pypi.python.org/pypi/cefpythonx) and you can
 install it using the pip tool (8.1+ required on Linux). You
 can also download wheel packages from [GitHub Releases](../../../releases).
 
@@ -246,9 +246,9 @@ on Windows.
 See Issue [#125](../../../issues/125) for more details.
 
 
-## v50+ Importing the cefpython3 package on Linux
+## v50+ Importing the cefpythonx package on Linux
 
-In the past on Linux it was required for the cefpython3 package
+In the past on Linux it was required for the cefpythonx package
 to be imported before any other packages due to tcmalloc global
 hook being loaded. This is not required anymore, tcmalloc is
 disabled by default.
@@ -496,7 +496,7 @@ on it is required for the app code to encode the url properly. You can use
 the `pathlib.PurePath.as_uri` in Python 3 or `urllib.pathname2url` in
 Python 2 (`urllib.request.pathname2url` in Python 3) depending on your case.
 
-The `cef.GetNavigateUrl` function was removed from the cefpython3 module.
+The `cef.GetNavigateUrl` function was removed from the cefpythonx module.
 
 
 ## v67+ Do not call the 'WindowUtils.OnSize' function

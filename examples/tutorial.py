@@ -1,7 +1,7 @@
 # Tutorial example. Doesn't depend on any third party GUI framework.
 # Tested with CEF Python v57.0+
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import base64
 import platform
 import sys

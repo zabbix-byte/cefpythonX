@@ -8,7 +8,7 @@
 # Setting DPI awareness programmatically via a call to cef.DpiAware.EnableHighDpiSupport
 # is problematic in Python, may not work and can cause display glitches.
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import platform
 import sys
 from pkg_resources import parse_version

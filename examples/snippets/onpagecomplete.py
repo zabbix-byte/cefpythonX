@@ -3,7 +3,7 @@ Execute custom Python code on a web page when page loading is complete.
 Implements a custom "_OnPageComplete" event in the LoadHandler object.
 """
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 
 def main():

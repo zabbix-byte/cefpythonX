@@ -2,7 +2,7 @@
 
 # On Mac the cefpython library must be imported the very first,
 # before any other libraries (Issue 155).
-import cefpython3.wx.chromectrl as chrome
+import cefpythonx.wx.chromectrl as chrome
 
 import os
 import wx

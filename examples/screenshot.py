@@ -35,7 +35,7 @@ NOTE: There are limits in Chromium on viewport size. For some
       mode call cef.Invalidate().
 """
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 from pkg_resources import parse_version
 import os
 import platform

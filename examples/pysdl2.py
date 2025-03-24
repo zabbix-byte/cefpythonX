@@ -65,10 +65,10 @@ def die(msg):
 
 try:
     # noinspection PyUnresolvedReferences
-    from cefpython3 import cefpython as cef
+    from cefpythonx import cefpython as cef
 except ImportError:
-    die("ERROR: cefpython3 package not found\n"
-        "       To install type: pip install cefpython3")
+    die("ERROR: cefpythonx package not found\n"
+        "       To install type: pip install cefpythonx")
 
 try:
     # noinspection PyUnresolvedReferences
@@ -193,7 +193,7 @@ def main():
     logging.debug("SDL2 initialised")
     # Create the window
     window = sdl2.video.SDL_CreateWindow(
-        b'cefpython3 SDL2 Demo',
+        b'cefpythonx SDL2 Demo',
         sdl2.video.SDL_WINDOWPOS_UNDEFINED,
         sdl2.video.SDL_WINDOWPOS_UNDEFINED,
         width,

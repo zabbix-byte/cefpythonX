@@ -47,7 +47,7 @@ Command to install with pip:
 pip install cefpythonx
 ```
 
-Hosted at [pypi/cefpython3](https://pypi.python.org/pypi/cefpython3). On Linux pip 8.1+ is required.
+Hosted at [pypi/cefpythonx](https://pypi.python.org/pypi/cefpythonx). On Linux pip 8.1+ is required.
 
 You can also download packages for offline installation available on the [GitHub Releases](../../releases) pages.
 

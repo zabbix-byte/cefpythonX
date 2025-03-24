@@ -13,11 +13,11 @@ Table of contents:
 
 ## Hello World!
 
-Instructions to install the cefpython3 package, clone the repository
+Instructions to install the cefpythonx package, clone the repository
 and run the hello_world.py example:
 
 ```
-pip install cefpython3==66.0
+pip install cefpythonx==66.0
 git clone https://github.com/cztomczak/cefpython.git
 cd cefpython/examples/
 python hello_world.py
@@ -104,8 +104,8 @@ yet ported to latest CEF. Some of them are externally maintained.
 - Example of implementing [ResourceHandler](../api/ResourceHandler.md)
   with the use of [WebRequest](../api/WebRequest.md) object and
   [WebRequestClient](../api/WebRequestClient.md) interface to allow
-  for reading/modifying web requests: see the [wxpython-response.py](https://github.com/cztomczak/cefpython/blob/cefpython31/cefpython/cef3/linux/binaries_64bit/wxpython-response.py)
-  example in the cefpython31 branch.
+  for reading/modifying web requests: see the [wxpython-response.py](https://github.com/cztomczak/cefpython/blob/cefpythonx1/cefpython/cef3/linux/binaries_64bit/wxpython-response.py)
+  example in the cefpythonx1 branch.
 - Example of using Python network library (urllib3/openssl) instead of Chromium's
   network library - see [gist by Massimiliano Dal Cero](https://gist.github.com/cztomczak/83b77cbdda03ccef81e22e8bd36a51f6)
 - Example of passing exceptions from Python to Javascript and using await syntax to receive values from python return values - see [Managed python calls example by Elliot Woods](https://github.com/elliotwoods/cefpython-tests/tree/0180b22eac10a1bde08820ca192fdc30eb93f00d/6.%20Managed%20python%20calls)
@@ -118,7 +118,7 @@ Here is a list of issues in the tracker to create or upgrade examples:
 - [Issue #322](../../../issues/322) - "Create pyglet example"
 - [Issue #312](../../../issues/312) - "Easy to use CefBrowser widgets
                                        for many popular GUI toolkits"
-- [Issue #301](../../../issues/301) - "Fix cefpython3.wx package to work
+- [Issue #301](../../../issues/301) - "Fix cefpythonx.wx package to work
                                        with latest v55+"
 - [Issue #289](../../../issues/289) - "Pygame / PyOpenGL example"
 - [Issue #288](../../../issues/288) - "Create panda3d_.py example"

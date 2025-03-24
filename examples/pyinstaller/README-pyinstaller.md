@@ -111,7 +111,7 @@ Traceback (most recent call last):
   File "c:\python27\lib\site-packages\PyInstaller-3.3-py2.7.egg\
        PyInstaller\loader\pyimod03_importers.py", line 396,
        in load_module exec(bytecode, module.__dict__)
-  File "site-packages\cefpython3\__init__.py", line 50, in <module>
+  File "site-packages\cefpythonx\__init__.py", line 50, in <module>
   File "c:\python27\lib\site-packages\PyInstaller-3.3-py2.7.egg\
        PyInstaller\loader\pyimod03_importers.py", line 687,
        in load_module module = imp.load_module(fullname, fp, filename,

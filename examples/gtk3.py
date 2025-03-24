@@ -9,7 +9,7 @@
 #            Reported as Issue #310.
 
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import ctypes
 import gi
 import os

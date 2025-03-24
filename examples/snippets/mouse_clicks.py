@@ -1,6 +1,6 @@
 # Perform mouse clicks and mouse movements programmatically.
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 
 def main():

@@ -6,7 +6,7 @@ you can accomplish this by calling Windows native functions
 using the ctypes module.
 """
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import ctypes
 import platform
 

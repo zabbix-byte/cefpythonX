@@ -2,7 +2,7 @@
 Shows how to set a cookie.
 """
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import datetime
 
 

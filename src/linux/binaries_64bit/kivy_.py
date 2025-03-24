@@ -4,7 +4,7 @@
 # In this example kivy-lang is used to declare the layout which
 # contains two buttons (back, forward) and the browser view.
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 import sys
 import os

@@ -36,11 +36,11 @@ Table of contents:
 You can install with pip. On Linux pip 8.1+ is required. Alternatively
 you can download packages for offline installation from [GitHub Releases](../../../releases).
 
-Run the commands below to install the cefpython3 package, clone
+Run the commands below to install the cefpythonx package, clone
 the repository and run the Hello World example:
 
 ```commandline
-pip install cefpython3==66.0
+pip install cefpythonx==66.0
 git clone https://github.com/cztomczak/cefpython.git
 cd cefpython/examples/
 python hello_world.py
@@ -66,7 +66,7 @@ is being embedded. When creating the browser, the "url" parameter is
 specified, which causes the browser to initially navigate to
 Google website. Let's analyze the code from that example:
 
-1. `from cefpython3 import cefpython as cef` - Import the cefpython
+1. `from cefpythonx import cefpython as cef` - Import the cefpython
    module and make a short "cef" alias
 2. `sys.excepthook = cef.ExceptHook` - Overwrite Python's default
    exception handler so that all CEF sub-processes are reliably
@@ -692,9 +692,9 @@ issues in the tracker for all available packagers:
 
 If you have any problems building executable ask on the [Forum](https://groups.google.com/group/cefpython).
 
-**Files in the cefpython3 package**
+**Files in the cefpythonx package**
 
-The cefpython3 package has the following components:
+The cefpythonx package has the following components:
 1. The CEF Python modules (cefpython_pyxx.pyd on Windows,
    cefpython_pyxx.so on Linux/Mac)
 2. The CEF dynamic library (libcef.dll on Windows, libcef.so on Linux,
@@ -703,7 +703,7 @@ The cefpython3 package has the following components:
    d3dcompiler, etc.) and some optional (widevinecdmadapter, etc.)
 4. Support files (*.pak, *.dat, *.bin, etc).
 
-See README.txt in the cefpython3 package which provides
+See README.txt in the cefpythonx package which provides
 extended details about all CEF binary files.
 
 

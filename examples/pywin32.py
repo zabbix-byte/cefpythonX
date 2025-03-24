@@ -13,7 +13,7 @@
 # Known issues:
 # - Crash on exit with multi threaded message loop (Issue #380)
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 import distutils.sysconfig
 from pkg_resources import parse_version

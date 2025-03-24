@@ -3,7 +3,7 @@ Execute custom Python code on a web page as soon as DOM is ready.
 Implements a custom "_OnDomReady" event in the LoadHandler object.
 """
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 
 def main():

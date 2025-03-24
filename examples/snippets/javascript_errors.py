@@ -4,7 +4,7 @@ Two ways for intercepting Javascript errors:
 2. DisplayHandler.OnConsoleMessage in Python
 """
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 g_htmlcode = """
 <!doctype html>

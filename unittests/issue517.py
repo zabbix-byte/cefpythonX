@@ -1,5 +1,5 @@
 # coding=utf8
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 import sys
 
 html = """

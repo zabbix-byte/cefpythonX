@@ -3,7 +3,7 @@ Implement RequestHandler.CanSendCookie and CanSaveCookie
 to block or allow cookies over network requests.
 """
 
-from cefpython3 import cefpython as cef
+from cefpythonx import cefpython as cef
 
 
 def main():

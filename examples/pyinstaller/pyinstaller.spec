@@ -42,14 +42,14 @@ else:
 
 a = Analysis(
     ["../wxpython.py"],
-    hookspath=["."],  # To find "hook-cefpython3.py"
+    hookspath=["."],  # To find "hook-cefpythonx.py"
     cipher=cipher_obj,
     win_private_assemblies=True,
     win_no_prefer_redirects=True,
 )
 
-if not os.environ.get("PYINSTALLER_CEFPYTHON3_HOOK_SUCCEEDED", None):
-    raise SystemExit("Error: Pyinstaller hook-cefpython3.py script was "
+if not os.environ.get("PYINSTALLER_cefpythonx_HOOK_SUCCEEDED", None):
+    raise SystemExit("Error: Pyinstaller hook-cefpythonx.py script was "
                      "not executed or it failed")
 
 pyz = PYZ(a.pure,
