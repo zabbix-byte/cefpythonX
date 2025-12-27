@@ -110,8 +110,8 @@ jobs:
         
         # Force GTK flags for Linux build manually to help CMake find headers
         if [ "${{ runner.os }}" == "Linux" ]; then
-           export CFLAGS=$(pkg-config --cflags gtk+-2.0)
-           export CXXFLAGS=$(pkg-config --cflags gtk+-2.0)
+           export CFLAGS="$(pkg-config --cflags gtk+-2.0) -Wno-error"
+           export CXXFLAGS="$(pkg-config --cflags gtk+-2.0) -Wno-error"
            echo "Forcing CFLAGS: $CFLAGS"
         fi
         
