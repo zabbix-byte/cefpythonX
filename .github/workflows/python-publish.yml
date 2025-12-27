@@ -38,6 +38,15 @@ jobs:
           libxrandr-dev \
           libcups2-dev \
           libatk1.0-dev
+          
+    - name: Debug Linux Environment
+      if: matrix.os == 'ubuntu-22.04'
+      run: |
+        echo "Checking pkg-config..."
+        which pkg-config || echo "pkg-config not found"
+        pkg-config --modversion gtk+-2.0 || echo "gtk+-2.0 info failed"
+        pkg-config --cflags gtk+-2.0 || echo "gtk+-2.0 cflags failed"
+        ls -d /usr/include/gtk-2.0 || echo "/usr/include/gtk-2.0 not found"
 
     - name: Set up Python
       uses: actions/setup-python@v4
