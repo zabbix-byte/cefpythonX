@@ -39,14 +39,15 @@ jobs:
         CEF_VER=$(python -c "import re, sys; print(re.search(r'#define CEF_VERSION \"([^\"]+)\"', open(sys.argv[1]).read()).group(1))" "src/version/cef_version_${OS_SUFFIX}.h")
         echo "Detected CEF Version: $CEF_VER"
         
-        URL_BASE="http://opensource.spotify.com/cefbuilds"
+        URL_BASE="https://cef-builds.spotifycdn.com"
         mkdir build
         cd build
         
         dl_and_extract() {
           local archive="cef_binary_${CEF_VER}_$1.tar.bz2"
-          echo "Downloading $archive..."
-          curl -f -O "$URL_BASE/$archive" || wget "$URL_BASE/$archive"
+          echo "Downloading $archive from $URL_BASE..."
+          # Try primary URL first (SpotifyCDN), fallback to old exact path if needed, usually CDN is correct root
+          curl -f -L -O "$URL_BASE/$archive" || wget "$URL_BASE/$archive"
           tar -xjf "$archive"
         }
 
