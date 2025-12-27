@@ -107,6 +107,14 @@ jobs:
         # Strip 'v' prefix from tag if present (e.g. v0.1 -> 0.1)
         VERSION=${GITHUB_REF_NAME#v}
         echo "Building version $VERSION"
+        
+        # Force GTK flags for Linux build manually to help CMake find headers
+        if [ "${{ runner.os }}" == "Linux" ]; then
+           export CFLAGS=$(pkg-config --cflags gtk+-2.0)
+           export CXXFLAGS=$(pkg-config --cflags gtk+-2.0)
+           echo "Forcing CFLAGS: $CFLAGS"
+        fi
+        
         python tools/build_distrib.py $VERSION --allow-partial
 
     - name: Upload artifacts
