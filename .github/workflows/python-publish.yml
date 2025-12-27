@@ -18,6 +18,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
+    - name: Install system dependencies (Linux)
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgtk2.0-dev
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
