@@ -304,9 +304,16 @@ def setup_environ():
         os.environ["CEF_LIB"] = os.path.join(CEF_BINARIES_LIBRARIES, "lib")
 
     if LINUX:
-        # TODO: Set CEF_CCFLAGS and CEF_LINK_FLAGS according to what is
-        #       in upstream cefclient, see cef/cmake/cef_variables.cmake.
-        pass
+        # Prevent errors from deprecated declarations in modern GCC/Glib (Issue #445)
+        deprecation_flags = " -Wno-error -Wno-deprecated-declarations -Wno-error=deprecated-declarations"
+        if "CEF_CCFLAGS" in os.environ:
+             os.environ["CEF_CCFLAGS"] += deprecation_flags
+        else:
+             os.environ["CEF_CCFLAGS"] = deprecation_flags
+        
+        # Also set CFLAGS/CXXFLAGS for Cython/setuptools
+        os.environ["CFLAGS"] = os.environ.get("CFLAGS", "") + deprecation_flags
+        os.environ["CXXFLAGS"] = os.environ.get("CXXFLAGS", "") + deprecation_flags
 
     # Mac compiler options
     if MAC:
