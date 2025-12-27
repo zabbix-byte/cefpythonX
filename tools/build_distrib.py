@@ -212,14 +212,14 @@ def clean_build_directories():
             cef_binary_dir = "cef_binary_{cef_version}_{postfix2}"\
                              .format(cef_version=version["CEF_VERSION"],
                                      postfix2=postfix2)
-            if len(glob.glob(cef_binary_dir)) != 1:
+            if len(glob.glob(os.path.join(BUILD_DIR, cef_binary_dir))) != 1:
                 raise Exception("Directory not found: "+cef_binary_dir)
         # 64-bit
         postfix2 = get_cef_postfix2_for_arch("64bit")
         cef_binary_dir = "cef_binary_{cef_version}_windows64"\
                          .format(cef_version=version["CEF_VERSION"],
                                  postfix2=postfix2)
-        if len(glob.glob(cef_binary_dir)) != 1:
+        if len(glob.glob(os.path.join(BUILD_DIR, cef_binary_dir))) != 1:
             raise Exception("Directory not found: "+cef_binary_dir)
 
         # Delete
