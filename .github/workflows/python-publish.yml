@@ -5,7 +5,7 @@ on:
     types: [published]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -27,6 +27,40 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r tools/requirements.txt
         
+    - name: Download CEF Binaries
+      shell: bash
+      run: |
+        # Detect OS suffix for header file
+        if [ "${{ runner.os }}" == "Linux" ]; then OS_SUFFIX="linux"; fi
+        if [ "${{ runner.os }}" == "Windows" ]; then OS_SUFFIX="win"; fi
+        if [ "${{ runner.os }}" == "macOS" ]; then OS_SUFFIX="mac"; fi
+        
+        # Extract version using Python
+        CEF_VER=$(python -c "import re; print(re.search(r'#define CEF_VERSION \"([^\"]+)\"', open(f'src/version/cef_version_{OS_SUFFIX}.h').read()).group(1))")
+        echo "Detected CEF Version: $CEF_VER"
+        
+        URL_BASE="http://opensource.spotify.com/cefbuilds"
+        mkdir build
+        cd build
+        
+        dl_and_extract() {
+          local archive="cef_binary_${CEF_VER}_$1.tar.bz2"
+          echo "Downloading $archive..."
+          curl -f -O "$URL_BASE/$archive" || wget "$URL_BASE/$archive"
+          tar -xjf "$archive"
+        }
+
+        if [ "${{ runner.os }}" == "Linux" ]; then
+          dl_and_extract "linux32"
+          dl_and_extract "linux64"
+        elif [ "${{ runner.os }}" == "Windows" ]; then
+          dl_and_extract "windows32"
+          dl_and_extract "windows64"
+        elif [ "${{ runner.os }}" == "macOS" ]; then
+          dl_and_extract "macosx64"
+        fi
+        ls -l
+
     - name: Build package
       shell: bash
       run: |
@@ -56,6 +90,12 @@ jobs:
         path: dist
         merge-multiple: true
         pattern: python-package-distributions-*
+
+    - name: Upload to GitHub Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: dist/*
 
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@release/v1
