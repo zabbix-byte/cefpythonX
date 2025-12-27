@@ -93,7 +93,10 @@ import glob
 import shutil
 import multiprocessing
 from collections import OrderedDict
-from setuptools.msvc import msvc9_query_vcvarsall
+try:
+    from setuptools.msvc import msvc9_query_vcvarsall
+except ImportError:
+    msvc9_query_vcvarsall = None
 
 # Constants
 CEF_UPSTREAM_GIT_URL = "https://bitbucket.org/chromiumembedded/cef.git"
