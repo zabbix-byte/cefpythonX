@@ -1,6 +1,6 @@
 # Copyright (c) 2017 CEF Python, see the Authors file.
 # All rights reserved. Licensed under BSD 3-clause license.
-# Project website: https://github.com/cztomczak/cefpython
+# Project website: https://github.com/zabbix-byte/cefpythonX
 
 """
 Build distribution packages for all architectures and all supported
@@ -45,7 +45,7 @@ This script does the following:
    When building CEF from sources copy build/chromium/src/cef/binary_distrib
    /cef_binary_*/ to the build/ directory.
 4. Install and/or upgrade tools/requirements.txt and uninstall
-   cefpython3 packages for all python versions
+   cefpythonx packages for all python versions
 5. Run automate.py --prebuilt-cef using both Python 32-bit and Python 64-bit
 6. Pack the prebuilt biaries using zip on Win/Mac and .tar.gz on Linux
    and move to build/distrib/
@@ -80,7 +80,7 @@ NO_AUTOMATE = False
 ALLOW_PARTIAL = False
 
 # Python versions
-SUPPORTED_PYTHON_VERSIONS = [(2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (3, 9)]
+SUPPORTED_PYTHON_VERSIONS = [(2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (3, 9), (3, 10), (3, 11), (3, 12), (3, 13)]
 
 # Python search paths. It will use first Python found for specific version.
 # Supports replacement of one environment variable in path eg.: %ENV_KEY%.
@@ -125,7 +125,7 @@ def main():
         sys.exit(1)
     check_pythons(pythons_32bit, pythons_64bit)
     install_upgrade_requirements(pythons_32bit + pythons_64bit)
-    uninstall_cefpython3_packages(pythons_32bit + pythons_64bit)
+    uninstall_cefpythonx_packages(pythons_32bit + pythons_64bit)
     if not os.path.exists(DISTRIB_DIR):
         os.makedirs(DISTRIB_DIR)
     if pythons_32bit:
@@ -379,13 +379,13 @@ def install_upgrade_requirements(pythons):
             sys.exit(1)
 
 
-def uninstall_cefpython3_packages(pythons):
+def uninstall_cefpythonx_packages(pythons):
     for python in pythons:
-        print("[build_distrib.py] Uninstall cefpython3 package"
+        print("[build_distrib.py] Uninstall cefpythonx package"
               " for: {name}".format(name=python["name"]))
 
         # Check if package is installed
-        command = ("\"{python}\" -m pip show cefpython3"
+        command = ("\"{python}\" -m pip show cefpythonx"
                    .format(python=python["executable"]))
         try:
             output = subprocess.check_output(command, shell=True)
@@ -399,12 +399,12 @@ def uninstall_cefpython3_packages(pythons):
 
         # Uninstall package. Only uninstall if package is installed,
         # otherwise error code is returned.
-        command = ("\"{python}\" -m pip uninstall -y cefpython3"
+        command = ("\"{python}\" -m pip uninstall -y cefpythonx"
                    .format(python=python["executable"]))
         command = sudo_command(command, python=python["executable"])
         pcode = subprocess.call(command, shell=True)
         if pcode != 0:
-            print("[build_distrib.py] ERROR while uninstall cefpython3"
+            print("[build_distrib.py] ERROR while uninstall cefpythonx"
                   " package using pip")
             sys.exit(1)
 
@@ -623,18 +623,18 @@ def check_cpp_extension_dependencies_issue359(setup_dir, all_pythons):
         return
     checked_any = False
     for python in all_pythons:
-        if python["version2"] in ((3, 5), (3, 6), (3, 7), (3, 8), (3, 9)):
+        if python["version2"] in ((3, 5), (3, 6), (3, 7), (3, 8), (3, 9), (3, 10), (3, 11), (3, 12), (3, 13)):
             checked_any = True
-            if not os.path.exists(os.path.join(setup_dir, "cefpython3",
+            if not os.path.exists(os.path.join(setup_dir, "cefpythonx",
                                                "msvcp140.dll")):
                 raise Exception("C++ ext dependency missing: msvcp140.dll")
         elif python["version2"] == (3, 4):
             checked_any = True
-            if not os.path.exists(os.path.join(setup_dir, "cefpython3",
+            if not os.path.exists(os.path.join(setup_dir, "cefpythonx",
                                                "msvcp100.dll")):
                 raise Exception("C++ ext dependency missing: msvcp100.dll")
         elif python["version2"] == (2, 7):
-            if not os.path.exists(os.path.join(setup_dir, "cefpython3",
+            if not os.path.exists(os.path.join(setup_dir, "cefpythonx",
                                                "msvcp90.dll")):
                 raise Exception("C++ ext dependency missing: msvcp90.dll")
             checked_any = True
@@ -643,7 +643,7 @@ def check_cpp_extension_dependencies_issue359(setup_dir, all_pythons):
 
 def test_wheel_packages(pythons):
     """Test wheel packages installation and run unit tests."""
-    uninstall_cefpython3_packages(pythons)
+    uninstall_cefpythonx_packages(pythons)
     for python in pythons:
         print("[build_distrib.py] Test wheel package (install, unittests) for"
               " {python_name}".format(python_name=python["name"]))

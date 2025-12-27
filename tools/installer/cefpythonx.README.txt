@@ -1,4 +1,4 @@
-1. To install CEF Python 3 package type:
+1. To install CEF Python X package type:
 
    python setup.py install
 

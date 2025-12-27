@@ -5,49 +5,35 @@ Table of contents:
 * [Install](#install)
 * [Examples](#examples)
 * [Support](#support)
-* [Support development](#support-development)
-* [Seeking sponsors](#seeking-sponsors)
 * [API](#api)
-
 
 ## Introduction
 
-CEF Python is an open source project founded by
-[Czarek Tomczak](https://www.linkedin.com/in/czarektomczak/)
-in 2012 to provide Python bindings for the
-[Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef) (CEF).
-The Chromium project focuses mainly on Google Chrome application
-development while CEF focuses on facilitating embedded browser use cases
-in third-party applications. Lots of applications use CEF control, there are
-more than [100 million CEF instances](http://en.wikipedia.org/wiki/Chromium_Embedded_Framework#Applications_using_CEF)
-installed around the world. There are numerous use cases for CEF:
+**CEF Python X** (`cefpythonx`) is a modern fork of the original CEF Python project, maintained by [zabbix-byte](https://github.com/zabbix-byte). 
 
-1. Use it as a modern HTML5 based rendering engine that can act as
-   a replacement for classic desktop GUI frameworks. Think of it as Electron
-   for Python.
-2. Embed a web browser widget in a classic Qt / GTK / wxPython desktop
-   application
-3. Render web content off-screen in applications that use custom drawing
-   frameworks
-4. Use it for automated testing of web applications with more advanced
-   capabilities than Selenium web browser automation due to CEF low level
-   programming APIs
-5. Use it for web scraping, as a web crawler or other kind of internet bots
+It provides Python bindings for the [Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef) (CEF), enabling you to embed a web browser control based on Chromium with full HTML5 support in your applications.
 
-CEF Python also provides examples of embedding CEF for many Python GUI
-frameworks such as PyQt, wxPython, PyGTK, PyGObject, Tkinter, Kivy, Panda3D,
-PyGame, PyOpenGL, PyWin32, PySide and PySDL2.
+**Key Features of CEF Python X:**
+*   **Modern Python Support**: Extended compatibility for **Python 3.10, 3.11, 3.12, and 3.13**.
+*   **Cross-Platform**: Supports Windows, Linux, and MacOS.
+*   **GUI Integration**: Embeddable in many Python GUI frameworks like PyQt, wxPython, PyGTK, PyGObject, Tkinter, Kivy, Panda3D, PyGame, PyOpenGL, PyWin32, PySide, and PySDL2.
 
+Use cases include:
+1.  **Modern GUI**: Use HTML5/CSS/JS for your application's UI (Electron-like experience).
+2.  **Embedded Browser**: Add a powerful web browser widget to legacy desktop apps (Qt, GTK, wxPython).
+3.  **Off-screen Rendering**: Render web content programmatically for custom use cases.
+4.  **Automation**: Advanced web automation and testing beyond Selenium's capabilities.
+5.  **Scraping**: High-fidelity web scraping and crawling.
 
 ## Install
 
 Command to install with pip:
 
 ```
-pip install cefpython3==66.1
+pip install cefpythonx
 ```
 
-Hosted at [pypi/cefpython3](https://pypi.python.org/pypi/cefpython3). On Linux pip 8.1+ is required.
+Hosted at [pypi/cefpythonx](https://pypi.python.org/pypi/cefpythonx). On Linux pip 8.1+ is required.
 
 You can also download packages for offline installation available on the [GitHub Releases](../../releases) pages.
 
@@ -55,9 +41,9 @@ Below is a table with supported platforms, python versions and architectures.
 
 OS | Py2 | Py3 | 32bit | 64bit | Requirements
 --- | --- | --- | --- | --- | ---
-Windows | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 / 3.8 / 3.9 | Yes | Yes | Windows 7+ (Note that Python 3.9 supports Windows 8.1+)
-Linux | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 | Yes | Yes | Debian 8+, Ubuntu 14.04+,<br> Fedora 24+, openSUSE 13.3+
-Mac | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 | No | Yes | MacOS 10.9+
+Windows | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 / 3.8 / 3.9 / 3.10 / 3.11 / 3.12 / 3.13 | Yes | Yes | Windows 7+ (Note that Python 3.9+ supports Windows 8.1+)
+Linux | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 / 3.8 / 3.9 / 3.10 / 3.11 / 3.12 / 3.13 | Yes | Yes | Debian 8+, Ubuntu 14.04+,<br> Fedora 24+, openSUSE 13.3+
+Mac | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 / 3.8 / 3.9 / 3.10 / 3.11 / 3.12 / 3.13 | No | Yes | MacOS 10.9+
 
 
 ## Examples
@@ -70,100 +56,13 @@ Mac | 2.7 | 3.4 / 3.5 / 3.6 / 3.7 | No | Yes | MacOS 10.9+
 
 ## Support
 
-- Ask questions and report problems on the
-  [Forum](https://groups.google.com/group/cefpython)
-- Supported examples are listed in the
-  [README-examples.md](examples/README-examples.md) file
-- Documentation is in the [docs/](docs) directory:
-  - [Build instructions](docs/Build-instructions.md)
-  - [Contributing code](docs/Contributing-code.md)
-  - [Knowledge Base](docs/Knowledge-Base.md)
-  - [Migration guide](docs/Migration-guide.md)
-  - [Tutorial](docs/Tutorial.md)
-- API reference is in the [api/](api) directory:
-  - [API categories](api/API-categories.md#api-categories)
-  - [API index](api/API-index.md#api-index)
-- Additional documentation is available in
-  [Issues labelled Knowledge Base](../../issues?q=is%3Aissue+is%3Aopen+label%3A%22Knowledge+Base%22)
-- To search documentation use GitHub "This repository" search
-  at the top. To narrow results to documentation only select
-  "Markdown" in the side pane.
+## Support
 
-## Support development
+- **Issues**: Report bugs or feature requests on the [GitHub Issues](https://github.com/zabbix-byte/cefpythonX/issues) page.
+- **Legacy Forum**: The original [Google Group](https://groups.google.com/group/cefpython) may contain historical information, but active development for `cefpythonx` happens here on GitHub.
+- **Examples**: Supported examples are listed in [examples/README-examples.md](examples/README-examples.md).
+- **Documentation**: Located in the [docs/](docs) directory.
 
-To support general CEF Python development efforts you can make a donation using PayPal button below:
-
-<a href='https://www.paypal.com/donate/?hosted_button_id=V7LU7PD4N4GGG'>
-<img src='https://raw.githubusercontent.com/wiki/cztomczak/phpdesktop/donate.gif' />
-</a><br>
-
-
-## Seeking sponsors
-
-CEF Python is seeking companies to sponsor development of this project. Most important
-thing would be to have continuous monthly releases with updates to latest Chromium. There is
-also lots of cool features and new settings that would be nice to implement. We have not yet
-exposed all of upstream CEF APIs. If your company would like to sponsor CEF Python development efforts
-then please contact [Czarek](https://www.linkedin.com/in/czarektomczak/). There are no active sponsors
-at this moment.
-
-
-### Previous sponsors
-
-<table>
- <tr>
-  <td>
-   <div align="center">
-    <a href="https://www.fivestars.com/">
-     <img src="https://raw.githubusercontent.com/wiki/cztomczak/cefpython/images/fivestars200.png">
-    </a><br>
-    <a href="https://www.fivestars.com/">www.fivestars.com</a>
-   </div>
-  </td>
-  <td>
-   <div align="center">
-    <a href="https://lampix.com/">
-     <img src="https://raw.githubusercontent.com/wiki/cztomczak/cefpython/images/lampix200.png">
-    </a><br>
-    <a href="https://lampix.com/">www.lampix.com</a>
-   </div>
-  </td>
-  <td>
-   <div align="center">
-    <a href="http://www.blueplanet.com/">
-     <img src="https://raw.githubusercontent.com/wiki/cztomczak/cefpython/images/cyan_new_logo_200x48.png">
-    </a><br>
-    <a href="http://www.blueplanet.com/">www.blueplanet.com</a>
-   </div>
-  </td>
- </tr>
- <tr>
-  <td>
-   <div align="center">
-    <a href="https://highside.io/">
-     <img src="https://raw.githubusercontent.com/wiki/cztomczak/cefpython/images/highside-onlight-200x48.png">
-    </a><br>
-    <a href="https://highside.io/">www.highside.io</a>
-   <div align="center">
-  </td>
-  <td>
-   <div align="center">
-    <a href="http://www.rentouch.ch/">
-     <img src="https://raw.githubusercontent.com/wiki/cztomczak/cefpython/images/rentouch.png">
-    </a><br>
-    <a href="http://www.rentouch.ch/">www.rentouch.ch</a>
-   </div>
-  </td>
-  <td>
-   <div align="center">
-    <a href="https://www.jetbrains.com/pycharm/">
-     <img src="https://raw.githubusercontent.com/wiki/cztomczak/cefpython/images/pycharm.png">
-    </a><br>
-    <a href="https://www.jetbrains.com/pycharm/">www.jetbrains.com</a>
-   </div>
-  </td>
- <tr>
-</table>
 
 
 ## API

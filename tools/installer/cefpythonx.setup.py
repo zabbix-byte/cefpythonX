@@ -1,9 +1,9 @@
 # Copyright (c) 2017 CEF Python, see the Authors file.
 # All rights reserved. Licensed under BSD 3-clause license.
-# Project website: https://github.com/cztomczak/cefpython
+# Project website: https://github.com/zabbix-byte/cefpythonX
 
 """
-cefpython3 package setup.py file.
+cefpythonx package setup.py file.
 
 Usage:
     setup.py install
@@ -103,7 +103,7 @@ def main():
     setup(
         distclass=Distribution,
         cmdclass=cmdclass,
-        name="cefpython3",  # No spaces here, so that it works with deb pkg
+        name="cefpythonx",  # No spaces here, so that it works with deb pkg
         version="{{VERSION}}",
         description="GUI toolkit for embedding a Chromium widget"
                     " in desktop applications",
@@ -128,12 +128,12 @@ def main():
                          "Project website:\n"
                          "https://github.com/cztomczak/cefpython",
         license="BSD 3-clause",
-        author="Czarek Tomczak",
-        author_email="czarek.tomczak@gmail.com",
-        url="https://github.com/cztomczak/cefpython",
-        download_url="https://github.com/cztomczak/cefpython/releases",
+        author="zabbix-byte",
+        author_email="",
+        url="https://github.com/zabbix-byte/cefpythonX",
+        download_url="https://github.com/zabbix-byte/cefpythonX/releases",
         platforms=["{{SYSCONFIG_PLATFORM}}"],
-        packages=["cefpython3"],  # Disabled: "cefpython3.wx"
+        packages=["cefpythonx"],  # Disabled: "cefpythonx.wx"
         package_data=get_package_data(),
         classifiers=[
             "Development Status :: 6 - Mature",
@@ -150,6 +150,10 @@ def main():
             "Programming Language :: Python :: 3.7",
             "Programming Language :: Python :: 3.8",
             "Programming Language :: Python :: 3.9",
+            "Programming Language :: Python :: 3.10",
+            "Programming Language :: Python :: 3.11",
+            "Programming Language :: Python :: 3.12",
+            "Programming Language :: Python :: 3.13",
             "Topic :: Desktop Environment",
             "Topic :: Internet",
             "Topic :: Internet :: WWW/HTTP",
@@ -167,19 +171,19 @@ def main():
 
 
 def get_package_data():
-    package_data = {"cefpython3": get_package_files()}
+    package_data = {"cefpythonx": get_package_files()}
     return package_data
 
 
 def get_package_files(relative_dir=".", recursive=False):
-    """Finds files recursively in the cefpython3/ local directory.
-    Includes only files and their paths are relative to the cefpython3/
+    """Finds files recursively in the cefpythonx/ local directory.
+    Includes only files and their paths are relative to the cefpythonx/
     local directory. Empty directories are not included."""
     old_dir = None
     if not recursive:
         old_dir = os.getcwd()
         setup_dir = os.path.abspath(os.path.dirname(__file__))
-        local_pkg_dir = os.path.join(setup_dir, "cefpython3")
+        local_pkg_dir = os.path.join(setup_dir, "cefpythonx")
         os.chdir(local_pkg_dir)
     files = os.listdir(relative_dir)
     ret = list()
@@ -218,15 +222,15 @@ def post_install_hook():
     print("[setup.py] Execute post_install_hook")
 
     # Find the installed package directory. Do not import from
-    # the local cefpython3/ directory.
+    # the local cefpythonx/ directory.
     print("[setup.py] Overload sys.path to facilitate finding correct"
           " directory for the installed package")
     del sys.path[0]
     sys.path.append("")
-    import cefpython3
-    installed_package_dir = os.path.dirname(cefpython3.__file__)
+    import cefpythonx
+    installed_package_dir = os.path.dirname(cefpythonx.__file__)
 
-    # Make sure that the imported package wasn't the local cefptyhon3/
+    # Make sure that the imported package wasn't the local cefpythonx/
     # directory.
     print("[setup.py] Installed package directory: {dir}"
           .format(dir=installed_package_dir))

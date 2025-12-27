@@ -1,6 +1,6 @@
 # Copyright (c) 2017 CEF Python, see the Authors file.
 # All rights reserved. Licensed under BSD 3-clause license.
-# Project website: https://github.com/cztomczak/cefpython
+# Project website: https://github.com/zabbix-byte/cefpythonX
 
 # Common stuff for tools such as automate.py, build.py, etc.
 
@@ -369,11 +369,11 @@ def get_cefpython_binary_basename(postfix2, ignore_error=False):
         return
     # If cef_version is 56 then expect version from command line to
     # start with "56.".
-    cef_major = cef_version["CHROME_VERSION_MAJOR"]
-    if not cmdline_version.startswith("{major}.".format(major=cef_major)):
-        if not ignore_error:
-            raise Exception("cmd line arg major version != Chrome version")
-        return
+    # cef_major = cef_version["CHROME_VERSION_MAJOR"]
+    # if not cmdline_version.startswith("{major}.".format(major=cef_major)):
+    #     if not ignore_error:
+    #         raise Exception("cmd line arg major version != Chrome version")
+    #     return
     dirname = "cefpython_binary_{version}_{os}".format(
             version=cmdline_version,
             os=postfix2)
@@ -381,7 +381,7 @@ def get_cefpython_binary_basename(postfix2, ignore_error=False):
 
 
 def get_setup_installer_basename(version, postfix2):
-    setup_basename = ("cefpython3_{version}_{os}"
+    setup_basename = ("cefpythonx_{version}_{os}"
                       .format(version=version, os=postfix2))
     return setup_basename
 
@@ -437,12 +437,12 @@ def get_version_from_command_line_args(caller_script, ignore_error=False):
         version = match.group(0)
         major = match.group(1)
         cef_version = get_cefpython_version()
-        if major != cef_version["CHROME_VERSION_MAJOR"]:
-            if ignore_error:
-                return ""
-            print("[{script}] ERROR: cmd arg major version != Chrome version"
-                  .format(script=os.path.basename(caller_script)))
-            sys.exit(1)
+        # if major != cef_version["CHROME_VERSION_MAJOR"]:
+        #     if ignore_error:
+        #         return ""
+        #     print("[{script}] ERROR: cmd arg major version != Chrome version"
+        #           .format(script=os.path.basename(caller_script)))
+        #     sys.exit(1)
         return version
     return
 
@@ -455,8 +455,8 @@ def get_cefpython_version():
 
 
 def get_version_from_file(header_file):
-    with open(header_file, "rU") as fp:
-        contents = fp.read()  # no need to decode() as "rU" specified
+    with open(header_file, "r", encoding="utf-8") as fp:
+        contents = fp.read()
     ret = dict()
     matches = re.findall(r'^#define (\w+) "?([^\s"]+)"?', contents,
                          re.MULTILINE)
@@ -480,6 +480,14 @@ def get_msvs_for_python(vs_prefix=False):
     elif sys.version_info[:2] == (3, 8):
         return "VS2015" if vs_prefix else "2015"
     elif sys.version_info[:2] == (3, 9):
+        return "VS2015" if vs_prefix else "2015"
+    elif sys.version_info[:2] == (3, 10):
+        return "VS2015" if vs_prefix else "2015"
+    elif sys.version_info[:2] == (3, 11):
+        return "VS2015" if vs_prefix else "2015"
+    elif sys.version_info[:2] == (3, 12):
+        return "VS2015" if vs_prefix else "2015"
+    elif sys.version_info[:2] == (3, 13):
         return "VS2015" if vs_prefix else "2015"
     else:
         print("ERROR: This version of Python is not supported")

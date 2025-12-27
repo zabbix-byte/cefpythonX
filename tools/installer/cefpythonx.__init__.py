@@ -1,6 +1,6 @@
 # Copyright (c) 2013 CEF Python, see the Authors file.
 # All rights reserved. Licensed under BSD 3-clause license.
-# Project website: https://github.com/cztomczak/cefpython
+# Project website: https://github.com/zabbix-byte/cefpythonX
 
 # NOTE: Template variables like {{VERSION}} are replaced with actual
 #       values when make_installer.py tool generates this package
@@ -17,12 +17,12 @@ __author__ = "The CEF Python authors"
 
 # If package was installed using PIP or setup.py then package
 # dir is here:
-#   /usr/local/lib/python2.7/dist-packages/cefpython3/
+#   /usr/local/lib/python2.7/dist-packages/cefpythonx/
 
 # If this is a debian package then package_dir returns:
-#   /usr/lib/pymodules/python2.7/cefpython3
+#   /usr/lib/pymodules/python2.7/cefpythonx
 # The above path consists of symbolic links to the real directory:
-#   /usr/share/pyshared/cefpython3
+#   /usr/share/pyshared/cefpythonx
 
 package_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -35,7 +35,7 @@ else:
     os.environ["LD_LIBRARY_PATH"] = package_dir
 
 # This env variable will be returned by cefpython.GetModuleDirectory().
-os.environ["CEFPYTHON3_PATH"] = package_dir
+os.environ["CEFPYTHONX_PATH"] = package_dir
 
 # This loads the libcef library for the main python executable.
 # Loading library dynamically using ctypes.CDLL is required on Linux.
@@ -70,5 +70,17 @@ elif sys.version_info[:2] == (3, 8):
 elif sys.version_info[:2] == (3, 9):
     # noinspection PyUnresolvedReferences
     from . import cefpython_py39 as cefpython
+elif sys.version_info[:2] == (3, 10):
+    # noinspection PyUnresolvedReferences
+    from . import cefpython_py310 as cefpython
+elif sys.version_info[:2] == (3, 11):
+    # noinspection PyUnresolvedReferences
+    from . import cefpython_py311 as cefpython
+elif sys.version_info[:2] == (3, 12):
+    # noinspection PyUnresolvedReferences
+    from . import cefpython_py312 as cefpython
+elif sys.version_info[:2] == (3, 13):
+    # noinspection PyUnresolvedReferences
+    from . import cefpython_py313 as cefpython
 else:
     raise Exception("Python version not supported: " + sys.version)
