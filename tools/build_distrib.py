@@ -264,9 +264,9 @@ def search_for_pythons(search_arch):
                       .format(env_key=env_key))
                 continue
         results = glob.glob(pattern)
-        # Fallback to system python if running in CI or partial build
         if not results and "GITHUB_ACTIONS" in os.environ:
              dir_name = os.path.dirname(sys.executable)
+             print("[DEBUG] Fallback to system python: "+dir_name)
              if dir_name not in results:
                  results.append(dir_name)
 
@@ -274,12 +274,20 @@ def search_for_pythons(search_arch):
             if os.path.isdir(path):
                 python = os.path.join(path,
                                       "python{ext}".format(ext=EXECUTABLE_EXT))
+                print("[DEBUG] Checking python executable: "+python)
+                if not os.path.isfile(python):
+                     # Try python3 if python not found
+                     python3 = os.path.join(path, "python3{ext}".format(ext=EXECUTABLE_EXT))
+                     if os.path.isfile(python3):
+                         python = python3
+                         print("[DEBUG] Found python3 instead: "+python)
+                     else:
+                        print("ERROR: Python executable not found: {executable}"
+                              .format(executable=python))
+                        # sys.exit(1) # Don't exit, just Skip
+                        continue 
                 version_code = ("import sys;"
                                 "print(str(sys.version_info[:3]));")
-                if not os.path.isfile(python):
-                    print("ERROR: Python executable not found: {executable}"
-                          .format(executable=python))
-                    sys.exit(1)
                 version_str = subprocess.check_output([python, "-c",
                                                        version_code])
                 version_str = version_str.strip()
