@@ -13,13 +13,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-22.04, windows-latest, macos-latest]
 
     steps:
     - uses: actions/checkout@v4
     
     - name: Install system dependencies (Linux)
-      if: matrix.os == 'ubuntu-latest'
+      if: matrix.os == 'ubuntu-22.04'
       run: |
         sudo apt-get update
         # Install comprehensive list of dependencies for CEF (Chrome 66 / GTK2)
