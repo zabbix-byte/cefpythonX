@@ -445,7 +445,8 @@ def build_cef_projects():
                 gtk_cflags = ""
             
             # Combine flags: Wno-error to bypass warnings, and gtk_cflags to find headers
-            cmake_flags = "-Wno-error " + gtk_cflags
+            # Add specific suppressions for Glib/GTK deprecations
+            cmake_flags = "-Wno-error -Wno-deprecated-declarations -Wno-error=deprecated-declarations " + gtk_cflags
             command.append("-DCMAKE_CXX_FLAGS={}".format(cmake_flags))
             command.append("-DCMAKE_C_FLAGS={}".format(cmake_flags))
         if MAC:
