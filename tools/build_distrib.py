@@ -317,6 +317,29 @@ def search_for_pythons(search_arch):
                         arch=arch,
                         executable=python,
                         name=name))
+
+    # Force auto-detect current python in CI environment if standard search fails
+    if "GITHUB_ACTIONS" in os.environ:
+         import platform
+         current_arch = platform.architecture()[0]
+         if current_arch == search_arch:
+             major, minor, micro = sys.version_info[:3]
+             if (major, minor) in SUPPORTED_PYTHON_VERSIONS:
+                 # Check if not already added
+                 already_added = False
+                 for p in pythons_found:
+                     if p["executable"] == sys.executable:
+                         already_added = True
+                 if not already_added:
+                     print("[build_distrib.py] CI Auto-detected python: {maj}.{min}.{mic} {arch}"
+                           .format(maj=major, min=minor, mic=micro, arch=current_arch))
+                     pythons_found.append(dict(
+                         version2=(int(major), int(minor)),
+                         version3=(int(major), int(minor), int(micro)),
+                         arch=current_arch,
+                         executable=sys.executable,
+                         name="Python {}.{}.{} {}".format(major, minor, micro, current_arch)
+                     ))
     ret_pythons = list()
     for version_tuple in SUPPORTED_PYTHON_VERSIONS:
         supported_python = None
