@@ -434,6 +434,11 @@ def build_cef_projects():
         command = prepare_build_command()
         command.extend(["cmake", "-G", "Ninja"])
         command.append("-DCMAKE_BUILD_TYPE="+Options.build_type)
+        if LINUX:
+            # Fix for "cc1plus: all warnings being treated as errors"
+            # due to deprecated GLib/GTK functions in newer Ubuntu
+            command.append("-DCMAKE_CXX_FLAGS=-Wno-error")
+            command.append("-DCMAKE_C_FLAGS=-Wno-error")
         if MAC:
             command.append("-DPROJECT_ARCH=x86_64")
         command.append("..")
