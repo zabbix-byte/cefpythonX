@@ -436,9 +436,18 @@ def build_cef_projects():
         command.append("-DCMAKE_BUILD_TYPE="+Options.build_type)
         if LINUX:
             # Fix for "cc1plus: all warnings being treated as errors"
-            # due to deprecated GLib/GTK functions in newer Ubuntu
-            command.append("-DCMAKE_CXX_FLAGS=-Wno-error")
-            command.append("-DCMAKE_C_FLAGS=-Wno-error")
+            # due to deprecated GLib/GTK functions in newer Ubuntu.
+            # ALSO must manually include GTK cflags here because setting CMAKE_CXX_FLAGS
+            # overrides the environment variables (CXXFLAGS) set in the workflow.
+            try:
+                gtk_cflags = subprocess.check_output(["pkg-config", "--cflags", "gtk+-2.0"]).decode("utf-8").strip()
+            except Exception:
+                gtk_cflags = ""
+            
+            # Combine flags: Wno-error to bypass warnings, and gtk_cflags to find headers
+            cmake_flags = "-Wno-error " + gtk_cflags
+            command.append("-DCMAKE_CXX_FLAGS={}".format(cmake_flags))
+            command.append("-DCMAKE_C_FLAGS={}".format(cmake_flags))
         if MAC:
             command.append("-DPROJECT_ARCH=x86_64")
         command.append("..")
