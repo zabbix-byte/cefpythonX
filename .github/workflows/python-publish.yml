@@ -35,8 +35,8 @@ jobs:
         if [ "${{ runner.os }}" == "Windows" ]; then OS_SUFFIX="win"; fi
         if [ "${{ runner.os }}" == "macOS" ]; then OS_SUFFIX="mac"; fi
         
-        # Extract version using Python
-        CEF_VER=$(python -c "import re; print(re.search(r'#define CEF_VERSION \"([^\"]+)\"', open(f'src/version/cef_version_{OS_SUFFIX}.h').read()).group(1))")
+        # Extract version using Python (pass filename as argument to avoid shell escaping issues)
+        CEF_VER=$(python -c "import re, sys; print(re.search(r'#define CEF_VERSION \"([^\"]+)\"', open(sys.argv[1]).read()).group(1))" "src/version/cef_version_${OS_SUFFIX}.h")
         echo "Detected CEF Version: $CEF_VER"
         
         URL_BASE="http://opensource.spotify.com/cefbuilds"
