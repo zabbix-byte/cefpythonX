@@ -809,12 +809,12 @@ def create_prebuilt_binaries():
     if LINUX:
          pass
         # On Windows resources/*.html files are embedded inside exe
-        ceftests_files = os.path.join(
-                src,
-                "build_cefclient", "tests", "ceftests",
-                Options.build_type,
-                "ceftests_files")
-        cpdir(ceftests_files, os.path.join(bindir, "ceftests_files"))
+        # ceftests_files = os.path.join(
+        #         src,
+        #         "build_cefclient", "tests", "ceftests",
+        #         Options.build_type,
+        #         "ceftests_files")
+        # cpdir(ceftests_files, os.path.join(bindir, "ceftests_files"))
 
     def copy_app(app):
             if MAC:
