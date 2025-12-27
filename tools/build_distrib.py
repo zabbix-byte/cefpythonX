@@ -260,10 +260,16 @@ def search_for_pythons(search_arch):
             if env_key in os.environ:
                 pattern = pattern.replace(match.group(0), os.environ[env_key])
             else:
-                print("ERROR: Env variable not found: {env_key}"
+                print("WARNING: Env variable not found: {env_key}"
                       .format(env_key=env_key))
-                sys.exit(1)
+                continue
         results = glob.glob(pattern)
+        # Fallback to system python if running in CI or partial build
+        if not results and "GITHUB_ACTIONS" in os.environ:
+             dir_name = os.path.dirname(sys.executable)
+             if dir_name not in results:
+                 results.append(dir_name)
+
         for path in results:
             if os.path.isdir(path):
                 python = os.path.join(path,
