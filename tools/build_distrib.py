@@ -512,6 +512,7 @@ def reduce_package_size_issue262(arch):
     bin_dir = os.path.join(prebuilt_basename, "bin")
 
     # Run `strip` command on `libcef.so`
+    bin_dir = os.path.join(BUILD_DIR, bin_dir)
     libcef_so = os.path.join(bin_dir, "libcef.so")
     print("[build_distrib.py] Strip {libcef_so}"
           .format(libcef_so=os.path.basename(libcef_so)))
